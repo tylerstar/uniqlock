@@ -15,7 +15,8 @@ const Clock = () => {
     const h = date.getHours();
     const m = date.getMinutes();
     const s = date.getSeconds();
-    setTime(h + ":" + checkTime(m) + ":" + s);
+
+    setTime(h + ":" + checkTime(m) + ":" + checkTime(s));
   };
 
   setInterval(updateTime, 1000);
