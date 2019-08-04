@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Clock = () => {
   const [time, setTime] = useState("");
@@ -19,7 +19,10 @@ const Clock = () => {
     setTime(h + ":" + checkTime(m) + ":" + checkTime(s));
   };
 
-  setInterval(updateTime, 1000);
+  useEffect(() => {
+    updateTime(); // Refresh the time immediately
+    setInterval(updateTime, 1000); // Refresh the time every second
+  });
 
   return (
     <div>{time}</div>
