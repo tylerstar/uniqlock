@@ -1,0 +1,57 @@
+.clock {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  align-items: center;
+  font-size: 8em;
+}
+
+.slider {
+  animation-name: slideDown;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes slideDown {
+  0% {
+    background-image: linear-gradient(to bottom, lightblue 50%, white 50%);
+    background-size: 100% 200%;
+    background-position: 0 0;
+  }
+  25% {
+    background-image: linear-gradient(to bottom, lightblue 50%, white 50%);
+    background-size: 100% 200%;
+    background-position: 0 -100%;
+  }
+  25.1% {
+    background-image: linear-gradient(to left, lightblue 50%, white 50%);
+    background-size: 200% 100%;
+    background-position: 0 0;
+  }
+  50% {
+    background-image: linear-gradient(to left, lightblue 50%, white 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+  }
+  50.1% {
+    background-image: linear-gradient(to top, white 50%, lightblue 50%);
+    background-size: 100% 200%;
+    background-position: 0 0;
+  }
+  75% {
+    background-image: linear-gradient(to top, white 50%, lightblue 50%);
+    background-size: 100% 200%;
+    background-position: 0 100%;
+  }
+  75.1% {
+    background-image: linear-gradient(to right, white 50%, lightblue 50%);
+    background-size: 200% 100%;
+    background-position: 0 0;
+  }
+  100% {
+    background-image: linear-gradient(to right, white 50%, lightblue 50%);
+    background-size: 200% 100%;
+    background-position: -100% 0;
+  }
+}
+

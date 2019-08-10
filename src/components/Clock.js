@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Clock.css';
 
 const Clock = () => {
   const [time, setTime] = useState("");
@@ -12,11 +13,11 @@ const Clock = () => {
 
   const updateTime = () => {
     const date = new Date();
-    const h = date.getHours();
-    const m = date.getMinutes();
-    const s = date.getSeconds();
+    const h = checkTime(date.getHours());
+    const m = checkTime(date.getMinutes());
+    const s = checkTime(date.getSeconds());
 
-    setTime(h + ":" + checkTime(m) + ":" + checkTime(s));
+    setTime(h + ":" + m + ":" + s);
   };
 
   useEffect(() => {
@@ -25,7 +26,11 @@ const Clock = () => {
   });
 
   return (
-    <div>{time}</div>
+    <div className="slider">
+      <div className="clock">
+        {time}
+      </div>
+    </div>
   );
 };
 
