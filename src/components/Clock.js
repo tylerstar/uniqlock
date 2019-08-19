@@ -3,8 +3,25 @@ import './Clock.css';
 
 const Clock = () => {
   const [time, setTime] = useState("");
+  const [slideClass, setSlideClass] = useState("slideDown");
 
-  const checkTime = (i) => {
+  const slideAnimLoop = [
+    "slideDown",
+    "slideLeft",
+    "slideUp",
+    "slideRight"
+  ];
+
+  const getNextAnim = currAnim => {
+    const currAnimIndex = slideAnimLoop.indexOf(currAnim);
+    if (currAnimIndex + 1 === slideAnimLoop.length) {
+      return slideAnimLoop[0];
+    } else {
+      return slideAnimLoop[currAnimIndex + 1];
+    }
+  };
+
+  const _formatTime = (i) => {
     if (i < 10) {
       i = "0" + i;
     }
@@ -13,20 +30,23 @@ const Clock = () => {
 
   const updateTime = () => {
     const date = new Date();
-    const h = checkTime(date.getHours());
-    const m = checkTime(date.getMinutes());
-    const s = checkTime(date.getSeconds());
+    const h = _formatTime(date.getHours());
+    const m = _formatTime(date.getMinutes());
+    const s = _formatTime(date.getSeconds());
 
-    setTime(h + ":" + m + ":" + s);
+    const latestTime = h + ":" + m + ":" + s;
+
+    if (time !== latestTime) {
+      const nextAnimClass = getNextAnim(slideClass);
+      setSlideClass(nextAnimClass);
+      setTime(latestTime);
+    }
   };
 
-  useEffect(() => {
-    updateTime(); // Refresh the time immediately
-    setInterval(updateTime, 1000); // Refresh the time every second
-  });
+  setTimeout(updateTime, 1000);
 
   return (
-    <div className="slider">
+    <div className={slideClass}>
       <div className="clock">
         {time}
       </div>
