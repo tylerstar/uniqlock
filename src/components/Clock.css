@@ -3,7 +3,8 @@
   justify-content: center;
   min-height: 100vh;
   align-items: center;
-  font-size: 8em;
+  font-size: 6em;
+  font-family: "DIN Alternate";
 }
 
 .slideDown {
@@ -14,19 +15,31 @@
 
 @keyframes slideDownAnim {
   0% {
-    background-image: linear-gradient(to bottom, pink 50%, white 50%);
+    background-image: linear-gradient(to bottom, #1E3C96 50%, white 50%);
     background-size: 100% 200%;
     background-position: 0 0;
+    color: white;
   }
-  80% {
-    background-image: linear-gradient(to bottom, pink 50%, white 50%);
+  10% {
+    color: white;
+  }
+  20% {
+    background-image: linear-gradient(to bottom, #1E3C96 50%, white 50%);
     background-size: 100% 200%;
-    background-position: 0 0;
+    background-position: 0 -95%;
+    color: #1E3C96;
   }
-  100% {
-    background-image: linear-gradient(to bottom, pink 50%, white 50%);
+  30% {
+    background-image: linear-gradient(to bottom, #1E3C96 50%, white 50%);
     background-size: 100% 200%;
     background-position: 0 -100%;
+    color: #1E3C96;
+  }
+  100% {
+    background-image: linear-gradient(to bottom, #1E3C96 50%, white 50%);
+    background-size: 100% 200%;
+    background-position: 0 -100%;
+    color: #1E3C96;
   }
 }
 
@@ -38,19 +51,31 @@
 
 @keyframes slideUpAnim {
   0% {
-    background-image: linear-gradient(to top, white 50%, pink 50%);
+    background-image: linear-gradient(to top, white 50%, #1E3C96 50%);
     background-size: 100% 200%;
     background-position: 0 0;
+    color: white;
   }
-  80% {
-    background-image: linear-gradient(to top, white 50%, pink 50%);
+  10% {
+    color: white;
+  }
+  20.0% {
+    background-image: linear-gradient(to top, white 50%, #1E3C96 50%);
     background-size: 100% 200%;
-    background-position: 0 0;
+    background-position: 0 95%;
+    color: #1E3C96;
   }
-  100% {
-    background-image: linear-gradient(to top, white 50%, pink 50%);
+  30% {
+    background-image: linear-gradient(to top, white 50%, #1E3C96 50%);
     background-size: 100% 200%;
     background-position: 0 100%;
+    color: #1E3C96;
+  }
+  100% {
+    background-image: linear-gradient(to top, white 50%, #1E3C96 50%);
+    background-size: 100% 200%;
+    background-position: 0 100%;
+    color: #1E3C96;
   }
 }
 
@@ -62,19 +87,31 @@
 
 @keyframes slideLeftAnim {
   0% {
-    background-image: linear-gradient(to left, pink 50%, white 50%);
+    background-image: linear-gradient(to left, #1E3C96 50%, white 50%);
     background-size: 200% 100%;
     background-position: 0 0;
+    color: #1E3C96;
   }
-  80% {
-    background-image: linear-gradient(to left, pink 50%, white 50%);
+  10% {
+    color: #1E3C96;
+  }
+  20% {
+    background-image: linear-gradient(to left, #1E3C96 50%, white 50%);
     background-size: 200% 100%;
-    background-position: 0 0;
+    background-position: 95% 0;
+    color: white;
   }
-  100% {
-    background-image: linear-gradient(to left, pink 50%, white 50%);
+  30% {
+    background-image: linear-gradient(to left, #1E3C96 50%, white 50%);
     background-size: 200% 100%;
     background-position: 100% 0;
+    color: white;
+  }
+  100% {
+    background-image: linear-gradient(to left, #1E3C96 50%, white 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    color: white;
   }
 }
 
@@ -82,23 +119,35 @@
   animation-name: slideRightAnim;
   animation-duration: 1s;
   animation-iteration-count: infinite;
+  color: white;
 }
 
 @keyframes slideRightAnim {
   0% {
-    background-image: linear-gradient(to right, white 50%, pink 50%);
+    background-image: linear-gradient(to right, white 50%, #1E3C96 50%);
     background-size: 200% 100%;
     background-position: 0 0;
+    color: #1E3C96;
   }
-  80% {
-    background-image: linear-gradient(to right, white 50%, pink 50%);
+  10% {
+    color: #1E3C96;
+  }
+  20% {
+    background-image: linear-gradient(to right, white 50%, #1E3C96 50%);
     background-size: 200% 100%;
-    background-position: 0 0;
+    background-position: -95% 0;
+    color: white;
   }
-  100% {
-    background-image: linear-gradient(to right, white 50%, pink 50%);
+  30% {
+    background-image: linear-gradient(to right, white 50%, #1E3C96 50%);
     background-size: 200% 100%;
     background-position: -100% 0;
+    color: white;
+  }
+  100% {
+    background-image: linear-gradient(to right, white 50%, #1E3C96 50%);
+    background-size: 200% 100%;
+    background-position: -100% 0;
+    color: white;
   }
 }
-

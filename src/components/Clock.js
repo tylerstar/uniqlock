@@ -34,12 +34,12 @@ const Clock = () => {
     const m = _formatTime(date.getMinutes());
     const s = _formatTime(date.getSeconds());
 
-    const latestTime = h + ":" + m + ":" + s;
+    const latestTime = h + " " + m + " " + s;
 
     if (time !== latestTime) {
+      setTime(latestTime);
       const nextAnimClass = getNextAnim(slideClass);
       setSlideClass(nextAnimClass);
-      setTime(latestTime);
     }
   };
 
@@ -48,7 +48,8 @@ const Clock = () => {
   return (
     <div className={slideClass}>
       <div className="clock">
-        {time}
+        <div className="time">{time}</div>
+        {/*<div className="destination">TOKYO / JAPAN</div>*/}
       </div>
     </div>
   );
