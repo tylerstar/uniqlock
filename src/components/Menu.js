@@ -1,10 +1,11 @@
 import React from 'react';
+import { Icon } from 'semantic-ui-react';
+import "./Menu.css";
 
 const Menu = () => {
   return (
     <div className="menu">
       <span className="text">MENU</span>
-      <span className="arrow"></span>
     </div>
   );
 };

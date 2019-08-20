@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchUserLocation } from "../api";
+import Menu from './Menu';
 import './Clock.css';
 
 const Clock = () => {
@@ -11,14 +12,14 @@ const Clock = () => {
   });
 
   useEffect(async () => {
-    const result = await fetchUserLocation(setUserLocation);
-    console.log(result);
-    if (result.time_zone && result.time_zone.name && result.country_name) {
-      setUserLocation({
-        city: result.time_zone.name.split("/")[1].toUpperCase(),
-        country: result.country_name.toUpperCase()
-      })
-    }
+    // const result = await fetchUserLocation(setUserLocation);
+    // console.log(result);
+    // if (result.time_zone && result.time_zone.name && result.country_name) {
+    //   setUserLocation({
+    //     city: result.time_zone.name.split("/")[1].toUpperCase(),
+    //     country: result.country_name.toUpperCase()
+    //   })
+    // }
   }, []);
 
   const slideAnimLoop = [
@@ -62,12 +63,15 @@ const Clock = () => {
   setTimeout(updateTime, 1000);
 
   return (
-    <div className={`${slideClass} background`}>
-      <div className="clock">
-        <div className="time">{time}</div>
-        <div className="destination">{userLocation.city} / {userLocation.country}</div>
+    <>
+      <Menu/>
+      <div className={`${slideClass} background`}>
+        <div className="clock">
+          <div className="time">{time}</div>
+          <div className="destination">{userLocation.city} / {userLocation.country}</div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
