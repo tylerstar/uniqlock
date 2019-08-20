@@ -1,10 +1,20 @@
-.clock {
+.background {
   display: flex;
   justify-content: center;
   min-height: 100vh;
+  min-width: 100vw;
   align-items: center;
+}
+
+.clock {
   font-size: 6em;
   font-family: "DIN Alternate";
+  font-weight: 900;
+}
+
+.destination {
+  font-size: 0.3em;
+  text-align: center;
 }
 
 .slideDown {
@@ -20,16 +30,10 @@
     background-position: 0 0;
     color: white;
   }
-  10% {
-    color: white;
-  }
-  20% {
-    background-image: linear-gradient(to bottom, #1E3C96 50%, white 50%);
-    background-size: 100% 200%;
-    background-position: 0 -95%;
+  12.5% {
     color: #1E3C96;
   }
-  30% {
+  25% {
     background-image: linear-gradient(to bottom, #1E3C96 50%, white 50%);
     background-size: 100% 200%;
     background-position: 0 -100%;
@@ -56,16 +60,10 @@
     background-position: 0 0;
     color: white;
   }
-  10% {
-    color: white;
-  }
-  20.0% {
-    background-image: linear-gradient(to top, white 50%, #1E3C96 50%);
-    background-size: 100% 200%;
-    background-position: 0 95%;
+  12.5% {
     color: #1E3C96;
   }
-  30% {
+  25% {
     background-image: linear-gradient(to top, white 50%, #1E3C96 50%);
     background-size: 100% 200%;
     background-position: 0 100%;
@@ -92,16 +90,10 @@
     background-position: 0 0;
     color: #1E3C96;
   }
-  10% {
-    color: #1E3C96;
-  }
-  20% {
-    background-image: linear-gradient(to left, #1E3C96 50%, white 50%);
-    background-size: 200% 100%;
-    background-position: 95% 0;
+  12.5% {
     color: white;
   }
-  30% {
+  25% {
     background-image: linear-gradient(to left, #1E3C96 50%, white 50%);
     background-size: 200% 100%;
     background-position: 100% 0;
@@ -129,16 +121,10 @@
     background-position: 0 0;
     color: #1E3C96;
   }
-  10% {
+  12.5% {
     color: #1E3C96;
   }
-  20% {
-    background-image: linear-gradient(to right, white 50%, #1E3C96 50%);
-    background-size: 200% 100%;
-    background-position: -95% 0;
-    color: white;
-  }
-  30% {
+  25% {
     background-image: linear-gradient(to right, white 50%, #1E3C96 50%);
     background-size: 200% 100%;
     background-position: -100% 0;

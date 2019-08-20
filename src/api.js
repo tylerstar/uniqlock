@@ -1,21 +1,13 @@
-const PREFIX = './api';
-
-// TODO!!! fetch Video requires parameters to locale the video
-export const fetchVideo = () => {
-
+export const fetchUserLocation = () => {
+  return fetchWithData("https://api.ipdata.co?api-key=fb9dfde35d54ee96cbb2abfa8a573182071cf91c14bc89dc7248a6c5");
 };
 
 const fetchWithData = (
   url = '',
-  data = {},
-  method = 'POST'
+  method = 'GET',
 ) => {
   return fetch(url, {
     method,
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
   })
     .then(handleErrors)
     .then(response => response.json());
