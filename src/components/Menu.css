@@ -1,13 +1,13 @@
 .menu {
   position: fixed;
-  top: 20%;
-  width: 4.5em;
-  height: 4em;
+  top: 25%;
+  width: 4em;
+  height: 3.5em;
   background-color: #1E3C96;
   display: inline;
   color: white;
-  padding-top: 3px;
-  padding-left: 3px;
+  padding-top: 4px;
+  padding-left: 4px;
   font-size: 90%;
   font-weight: 900;
   font-family: "DIN Alternate";
