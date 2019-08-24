@@ -6,9 +6,7 @@ const fetchWithData = (
   url = '',
   method = 'GET',
 ) => {
-  return fetch(url, {
-    method,
-  })
+  return fetch(url, { method })
     .then(handleErrors)
     .then(response => response.json());
 };

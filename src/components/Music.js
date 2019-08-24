@@ -10,8 +10,6 @@ const Music = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [soundURL, setSoundURL] = useState(soundList[0]);
 
-
-  const context = new AudioContext();
   const toggleMusic = () => {
     // setIsPlaying(!isPlaying);
     // context.suspend();
@@ -19,7 +17,7 @@ const Music = () => {
   };
 
   useEffect(() => {
-
+    const context = new AudioContext();
     document.getElementById('root').addEventListener('click', () => {
       context.resume().then(() => {
         console.log("playback.");
@@ -35,9 +33,6 @@ const Music = () => {
     };
 
     const fetchSound = () => {
-      if (soundURL === "") {
-        setSoundURL(soundList[0]);
-      }
       window.fetch(soundURL)
         .then(response => response.arrayBuffer())
         .then(arrayBuffer => context.decodeAudioData(arrayBuffer))

@@ -1,27 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { fetchUserLocation } from "../api";
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import Menu from './Menu';
 import  Music from './Music';
 import './Clock.css';
 
-const Clock = () => {
+const Clock = ({ city, country }) => {
   const [time, setTime] = useState("");
   const [slideClass, setSlideClass] = useState("slideDown");
-  const [userLocation, setUserLocation] = useState({
-    country: "JAPAN",
-    city: "TOKYO"
-  });
-
-  useEffect(async () => {
-    const result = await fetchUserLocation(setUserLocation);
-    console.log(result);
-    if (result.time_zone && result.time_zone.name && result.country_name) {
-      setUserLocation({
-        city: result.time_zone.name.split("/")[1].toUpperCase(),
-        country: result.country_name.toUpperCase()
-      })
-    }
-  }, []);
 
   const slideAnimLoop = [
     "slideDown",
@@ -70,11 +55,17 @@ const Clock = () => {
       <div className={`${slideClass} background`}>
         <div className="clock">
           <div className="time">{time}</div>
-          <div className="destination">{userLocation.city} / {userLocation.country}</div>
+          <div className="destination">{city} / {country}</div>
         </div>
       </div>
     </>
   );
 };
 
-export default Clock;
+const mapState = state => ({
+  city: state.user.city,
+  country: state.user.country
+});
+export default connect(
+  mapState,
+)(Clock);
