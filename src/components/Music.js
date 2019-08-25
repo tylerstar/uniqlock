@@ -1,25 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { playNextTrack } from "../actions";
 import { connect } from 'react-redux';
 import { Icon } from '@blueprintjs/core';
 import './Music.css';
 
-const Music = ({ context, playNextTrack }) => {
+const Music = ({ context }) => {
+  const [isPlaying, setIsPlaying] = useState(true);
   const togglePlay = () => {
     if (context.state === 'running') {
       context.suspend();
+      setIsPlaying(false);
     } else {
       context.resume();
+      setIsPlaying(true);
     }
   };
 
-  useEffect(() => {
-    playNextTrack();
-  }, []);
+  let icon;
+  if (isPlaying) {
+    icon = <Icon icon="volume-up" className="volume" onClick={togglePlay} />;
+  } else {
+    icon = <Icon icon="volume-off" className="volume" onClick={togglePlay} />
+  }
 
-  return (
-    <Icon icon="volume-up" className="volume" onClick={togglePlay} />
-  );
+  useEffect(() => {
+  }, [isPlaying]);
+
+  return icon;
 };
 
 const mapState = state => ({
@@ -27,5 +33,4 @@ const mapState = state => ({
 });
 export default connect(
   mapState,
-  { playNextTrack }
 )(Music);
