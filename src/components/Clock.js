@@ -50,8 +50,6 @@ const Clock = ({ city, country }) => {
 
   return (
     <>
-      <Menu/>
-      <Music />
       <div className={`${slideClass} background`}>
         <div className="clock">
           <div className="time">{time}</div>

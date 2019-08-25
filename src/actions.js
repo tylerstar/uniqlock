@@ -1,5 +1,5 @@
 import {
-  fetchUserLocation
+  fetchUserLocation,
 } from './api';
 
 export const LOAD_USER_LOCATION_BEGIN = 'LOAD_USER_LOCATION_BEGIN';
@@ -34,7 +34,7 @@ const queryUserLocation = () => {
         }
       })
       .catch(error => {
-        dispatch({ type: LOAD_USER_LOCATION_ERROR, error })
+        dispatch({ type: LOAD_USER_LOCATION_ERROR, error });
       });
   };
 };
@@ -50,3 +50,4 @@ export const loadUserLocation = () => {
     }
   };
 };
+
