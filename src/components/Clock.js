@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import Menu from './Menu';
-import  Music from './Music';
 import './Clock.css';
 
 const Clock = ({ city, country }) => {
@@ -62,7 +60,8 @@ const Clock = ({ city, country }) => {
 
 const mapState = state => ({
   city: state.user.city,
-  country: state.user.country
+  country: state.user.country,
+  context: state.media.audioContext
 });
 export default connect(
   mapState,

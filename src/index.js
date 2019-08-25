@@ -8,7 +8,7 @@ import {
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducer from './reducers';
-import { loadUserLocation } from './actions';
+import { loadUserLocation, createAudioPlayer } from './actions';
 import './index.css';
 import App from './App';
 
@@ -25,6 +25,7 @@ const enhancer = composeEnhancers(
 );
 const store = createStore(reducer, enhancer);
 store.dispatch(loadUserLocation());
+store.dispatch(createAudioPlayer());
 
 ReactDOM.render(
   <Provider store={store}>
