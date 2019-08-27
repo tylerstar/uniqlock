@@ -8,12 +8,14 @@
 
 .clock {
   font-size: 7em;
-  font-family: "DIN Alternate";
+  max-width: 30%;
+  min-width: 400px;
   font-weight: 900;
+  text-align: center;
 }
 
 .destination {
-  font-size: 0.5em;
+  font-size: 50%;
   text-align: center;
 }
 

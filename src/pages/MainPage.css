@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "D-DIN";
+  src: url('../assets/fonts/D-DIN-Bold.otf') format("opentype");
+}
+
+.main-page {
+  font-family: "D-DIN";
+}
