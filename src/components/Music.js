@@ -4,7 +4,7 @@ import { Icon } from '@blueprintjs/core';
 import './Music.css';
 
 const Music = ({ context }) => {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(context.state === 'running');
   const togglePlay = () => {
     if (context.state === 'running') {
       context.suspend();

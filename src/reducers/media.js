@@ -4,7 +4,7 @@ import {
   PLAY_MUSIC_BEGIN,
   PLAY_MUSIC_SUCCESS,
   PLAY_MUSIC_ERROR
-} from '../actions';
+} from '../actions/actions';
 
 const initialState = {
   audioContext: null,

@@ -1,11 +1,7 @@
 import {
   fetchSound,
   fetchUserLocation,
-} from './api';
-import {
-  getMedia
-} from "./selectors";
-
+} from '../api';
 export const LOAD_USER_LOCATION_BEGIN = 'LOAD_USER_LOCATION_BEGIN';
 export const LOAD_USER_LOCATION_SUCCESS = 'LOAD_USER_LOCATION_SUCCESS';
 export const LOAD_USER_LOCATION_ERROR = 'LOAD_USER_LOCATION_ERROR';

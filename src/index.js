@@ -12,7 +12,7 @@ import {
   loadUserLocation,
   createAudioPlayer,
   playNextTrack
-} from './actions';
+} from './actions/actions';
 import './index.css';
 import App from './App';
 
