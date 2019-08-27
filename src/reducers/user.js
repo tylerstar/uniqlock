@@ -3,7 +3,7 @@ import {
   LOAD_USER_LOCATION_BEGIN,
   LOAD_USER_LOCATION_SUCCESS,
   LOAD_USER_LOCATION_ERROR
-} from '../actions/actions';
+} from '../actions/user';
 
 const initialState = {
   country: 'JAPAN',

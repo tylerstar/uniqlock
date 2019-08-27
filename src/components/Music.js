@@ -29,7 +29,7 @@ const Music = ({ context }) => {
 };
 
 const mapState = state => ({
-  context: state.media.audioContext,
+  context: state.sound.audioContext,
 });
 export default connect(
   mapState,

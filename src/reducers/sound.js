@@ -3,15 +3,15 @@ import {
   CREATE_AUDIO_PLAYER,
   PLAY_MUSIC_BEGIN,
   PLAY_MUSIC_SUCCESS,
-  PLAY_MUSIC_ERROR
-} from '../actions/actions';
+  PLAY_MUSIC_ERROR,
+} from '../actions/sound';
 
 const initialState = {
   audioContext: null,
-  currentTrackSeries: null,
-  currentTrackIndex: -1,
+  currentSeries: null,
+  currentIndex: -1,
   error: null,
-  trackSeries: {
+  sounds: {
     'uniqlock2': [0, 1, 2, 3, 4]
   }
 };
@@ -24,8 +24,8 @@ const reducer = produce((draft, action) => {
       draft.error = null;
       return;
     case PLAY_MUSIC_SUCCESS:
-      draft.currentTrackIndex = action.payload.index;
-      draft.currentTrackSeries = action.payload.series;
+      draft.currentIndex = action.payload.index;
+      draft.currentSeries = action.payload.series;
       return;
     case PLAY_MUSIC_ERROR:
       draft.error = action.error;

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import './Clock.css';
+import Video from "./Video";
 
 const Clock = ({ city, country }) => {
   const [time, setTime] = useState("");
   const [slideClass, setSlideClass] = useState("slideDown");
+  const [playVideo, setplayVideo] = useState(false);
 
   const slideAnimLoop = [
     "slideDown",
@@ -49,9 +51,14 @@ const Clock = ({ city, country }) => {
   return (
     <>
       <div className={`${slideClass} background`}>
-        <div className="clock">
-          <div className="time">{time}</div>
-          <div className="destination">{city} / {country}</div>
+        <div className="main-panel">
+          <div className='clock'>
+            <div className="time">{time}</div>
+            <div className="destination">{city} / {country}</div>
+          </div>
+          {/*<div className='video'>*/}
+            {/*<Video />*/}
+          {/*</div>*/}
         </div>
       </div>
     </>
@@ -61,7 +68,7 @@ const Clock = ({ city, country }) => {
 const mapState = state => ({
   city: state.user.city,
   country: state.user.country,
-  context: state.media.audioContext
+  context: state.sound.audioContext
 });
 export default connect(
   mapState,

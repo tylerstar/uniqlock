@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
 import user from './user';
-import media from './media'
+import sound from './sound';
+import video from './video';
 
 export default combineReducers({
   user,
-  media
+  sound,
+  video
 });
