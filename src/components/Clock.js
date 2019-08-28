@@ -62,7 +62,7 @@ const Clock = ({ city, country }) => {
     if (seconds.toString().endsWith('0')) {
       setVideoIndex(getNextVideoIndex());
       setIsVideoPlay('play-video');
-    } else if (seconds.toString().endsWith('5')) {
+    } else if (seconds.toString().endsWith('6')) {
       setIsVideoPlay('hide-video');
     }
   };
