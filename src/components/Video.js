@@ -1,13 +1,23 @@
-import React from 'react';
-import './Video.css';
+import React, { useState, useEffect, useRef } from 'react';
+import videojs from 'video.js';
+import { connect } from 'react-redux';
 
-const Video = ({ videoURL }) => {
-  // Prefetch the video and generate a blob url then pass the url here
-  // Just to ensure autoplay can trigger play immediately
+const Video = ({ series, index }) => {
+  const getVideoURL = (series, index) => {
+    if (index !== null && index >= 1 ) {
+      return "https://uniqlock.s3-ap-northeast-1.amazonaws.com" +
+        `/uniqlo_extra/${series}/flv/5sec_${index}.mp4`;
+    }
+  };
+
+  // useEffect(() => {
+    // const player = videojs(playerRef.current,
+    //   { muted: true, controls: false, autoplay: true },
+    //   () => player.src(getVideoURL(series, index)));
+  // }, [series, index]);
+
   return (
-    <video width="100%" autoPlay>
-      <source src={ videoURL } type="video/mp4" />
-    </video>
+    <video autoPlay src={getVideoURL(series, index)}/>
   );
 };
 

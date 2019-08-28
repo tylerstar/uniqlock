@@ -9,10 +9,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducer from './reducers';
 import { loadUserLocation } from './actions/user';
-import {
-  createAudioPlayer,
-  playNextTrack
-} from './actions/sound';
+import { createAudioPlayer, playNextTrack} from './actions/sound';
 import './index.css';
 import App from './App';
 

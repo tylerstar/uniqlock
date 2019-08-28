@@ -9,12 +9,6 @@ export const fetchSound = (soundSeries, soundIndex) => {
     `/uniqlo_extra/${soundSeries}/sound/sound${soundIndex}.mp3`, { method: 'GET'});
 };
 
-export const fetchVideo = (videoSeries, videoIndex) => {
-  // https://uniqlock.s3-ap-northeast-1.amazonaws.com/uniqlo_extra/uniqlock2/flv/5sec_1.mp4
-  return fetch("https://uniqlock.s3-ap-northeast-1.amazonaws.com" +
-    `/uniqlo_extra/${videoSeries}/flv/5sec_${videoIndex}.mp4`, { method: 'GET' });
-};
-
 const fetchWithData = (
   url = '',
   method = 'GET',

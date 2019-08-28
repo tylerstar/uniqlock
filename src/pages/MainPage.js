@@ -2,7 +2,6 @@ import React from 'react';
 import Clock from '../components/Clock';
 import Menu from "../components/Menu";
 import Music from "../components/Music";
-import Video from '../components/Video';
 import './MainPage.css';
 
 const MainPage = () => {

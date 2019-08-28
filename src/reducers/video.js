@@ -1,23 +1,23 @@
 import produce from 'immer';
 import {
-  FETCH_VIDEO_BEGIN,
-  FETCH_VIDEO_SUCCESS,
-  FETCH_VIDEO_ERROR,
-  PLAY_VIDEO_BEGIN,
-  PLAY_VIDEO_SUCCESS,
-  PLAY_VIDEO_ERROR
+  PLAY_VIDEO
 } from '../actions/video';
 
 const initialState = {
-  currentIndex: null,
-  currentSeries: null,
+  isLoading: false,
+  currentIndex: 0,
+  currentSeries: 'uniqlock2',
   error: null,
   videos: {
     'uniqlock2': [...Array(80).keys()]
-  }
+  },
+  videoURLs: {}
 };
 const reducer = produce((draft, action) => {
   switch (action.type) {
+    case PLAY_VIDEO:
+      draft.currentIndex += 1;
+      return;
     default:
       return;
   }

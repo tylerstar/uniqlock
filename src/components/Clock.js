@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import { connect } from 'react-redux';
+import videojs from 'video.js';
+import { playVideo } from "../actions/video";
+import { getCurrentVideoURL } from "../selectors";
+import Video from './Video';
 import './Clock.css';
-import Video from "./Video";
 
 const Clock = ({ city, country }) => {
   const [time, setTime] = useState("");
   const [slideClass, setSlideClass] = useState("slideDown");
-  const [playVideo, setplayVideo] = useState(false);
+  const [videoIndex, setVideoIndex] = useState(null);
+  const [videoSeries, setVideoSeries] = useState("uniqlock2");
 
   const slideAnimLoop = [
     "slideDown",
@@ -24,6 +28,14 @@ const Clock = ({ city, country }) => {
     }
   };
 
+  const getNextVideoIndex = () => {
+    if (videoIndex === 80 || videoIndex === null) {
+      return 0;
+    } else {
+      return videoIndex + 1;
+    }
+  };
+
   const _formatTime = (i) => {
     if (i < 10) {
       i = "0" + i;
@@ -35,7 +47,8 @@ const Clock = ({ city, country }) => {
     const date = new Date();
     const h = _formatTime(date.getHours());
     const m = _formatTime(date.getMinutes());
-    const s = _formatTime(date.getSeconds());
+    const seconds = date.getSeconds();
+    const s = _formatTime(seconds);
 
     const latestTime = h + " " + m + " " + s;
 
@@ -43,6 +56,10 @@ const Clock = ({ city, country }) => {
       setTime(latestTime);
       const nextAnimClass = getNextAnim(slideClass);
       setSlideClass(nextAnimClass);
+    }
+
+    if (seconds % 5 === 0) {
+      setVideoIndex(getNextVideoIndex());
     }
   };
 
@@ -56,9 +73,7 @@ const Clock = ({ city, country }) => {
             <div className="time">{time}</div>
             <div className="destination">{city} / {country}</div>
           </div>
-          {/*<div className='video'>*/}
-            {/*<Video />*/}
-          {/*</div>*/}
+          <Video series={videoSeries} index={videoIndex} />
         </div>
       </div>
     </>
@@ -68,8 +83,9 @@ const Clock = ({ city, country }) => {
 const mapState = state => ({
   city: state.user.city,
   country: state.user.country,
-  context: state.sound.audioContext
+  videoURL: getCurrentVideoURL(state)
 });
 export default connect(
   mapState,
+  { playVideo }
 )(Clock);
