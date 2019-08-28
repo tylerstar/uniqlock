@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import videojs from 'video.js';
 import { connect } from 'react-redux';
+import './Video.css';
 
 const Video = ({ series, index }) => {
   const getVideoURL = (series, index) => {
@@ -10,14 +11,8 @@ const Video = ({ series, index }) => {
     }
   };
 
-  // useEffect(() => {
-    // const player = videojs(playerRef.current,
-    //   { muted: true, controls: false, autoplay: true },
-    //   () => player.src(getVideoURL(series, index)));
-  // }, [series, index]);
-
   return (
-    <video autoPlay src={getVideoURL(series, index)}/>
+    <video width="100%" height="auto" autoPlay src={getVideoURL(series, index)}/>
   );
 };
 

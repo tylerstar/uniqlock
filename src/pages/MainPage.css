@@ -6,3 +6,7 @@
 .main-page {
   font-family: "D-DIN";
 }
+
+.menu {
+  z-index: 10;
+}

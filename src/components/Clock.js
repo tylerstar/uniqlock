@@ -9,8 +9,9 @@ import './Clock.css';
 const Clock = ({ city, country }) => {
   const [time, setTime] = useState("");
   const [slideClass, setSlideClass] = useState("slideDown");
-  const [videoIndex, setVideoIndex] = useState(null);
+  const [videoIndex, setVideoIndex] = useState(0);
   const [videoSeries, setVideoSeries] = useState("uniqlock2");
+  const [isVideoPlay, setIsVideoPlay] = useState('hide-video');
 
   const slideAnimLoop = [
     "slideDown",
@@ -58,8 +59,11 @@ const Clock = ({ city, country }) => {
       setSlideClass(nextAnimClass);
     }
 
-    if (seconds % 5 === 0) {
+    if (seconds.toString().endsWith('0')) {
       setVideoIndex(getNextVideoIndex());
+      setIsVideoPlay('play-video');
+    } else if (seconds.toString().endsWith('5')) {
+      setIsVideoPlay('hide-video');
     }
   };
 
@@ -67,13 +71,15 @@ const Clock = ({ city, country }) => {
 
   return (
     <>
+      <div className={`video-panel ${isVideoPlay}`}>
+        <Video series={videoSeries} index={videoIndex} />
+      </div>
       <div className={`${slideClass} background`}>
         <div className="main-panel">
           <div className='clock'>
             <div className="time">{time}</div>
             <div className="destination">{city} / {country}</div>
           </div>
-          <Video series={videoSeries} index={videoIndex} />
         </div>
       </div>
     </>

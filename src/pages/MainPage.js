@@ -7,7 +7,7 @@ import './MainPage.css';
 const MainPage = () => {
   return (
     <div className="main-page">
-      <Menu/>
+      <Menu className="menu" />
       <Music/>
       <Clock/>
     </div>
