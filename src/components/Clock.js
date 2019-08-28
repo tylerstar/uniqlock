@@ -60,10 +60,10 @@ const Clock = ({ city, country }) => {
     }
 
     if (seconds.toString().endsWith('0')) {
+      setIsVideoPlay('hide-video');
+    } else if (seconds.toString().endsWith('5')) {
       setVideoIndex(getNextVideoIndex());
       setIsVideoPlay('play-video');
-    } else if (seconds.toString().endsWith('6')) {
-      setIsVideoPlay('hide-video');
     }
   };
 
