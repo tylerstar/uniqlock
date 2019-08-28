@@ -59,9 +59,9 @@ const Clock = ({ city, country }) => {
       setSlideClass(nextAnimClass);
     }
 
-    if (seconds.toString().endsWith('0')) {
+    if (seconds.toString().endsWith('1')) {
       setIsVideoPlay('hide-video');
-    } else if (seconds.toString().endsWith('5')) {
+    } else if (seconds.toString().endsWith('6')) {
       setVideoIndex(getNextVideoIndex());
       setIsVideoPlay('play-video');
     }
