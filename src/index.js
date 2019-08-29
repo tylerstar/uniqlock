@@ -13,6 +13,7 @@ import {
   createAudioPlayer,
   playSoundTrack,
   pickRandomSeries,
+  pickRandomColour,
 } from './actions/media';
 import './index.css';
 import App from './App';
@@ -29,6 +30,7 @@ const enhancer = composeEnhancers(
   applyMiddleware(thunk)
 );
 const store = createStore(reducer, enhancer);
+store.dispatch(pickRandomColour());
 store.dispatch(loadUserLocation());
 store.dispatch(createAudioPlayer());
 store.dispatch(pickRandomSeries());

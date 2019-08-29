@@ -1,7 +1,9 @@
 import { fetchSound } from '../api';
 import { getSoundMaxIndexBySeries } from "../constant/tracks";
+import { getAllColours } from "../constant/colors";
 
 export const PICK_RANDOM_SERIES = 'PICK_RANDOM_SERIES';
+export const PICK_RANDOM_COLOUR = 'PICK_RANDOM_COLOUR';
 export const CREATE_AUDIO_PLAYER = 'CREATE_AUDIO_PLAYER';
 export const PLAY_MUSIC_BEGIN = 'PLAY_MUSIC_BEGIN';
 export const PLAY_MUSIC_SUCCESS = 'PLAY_MUSIC_SUCCESS';
@@ -14,6 +16,18 @@ export const pickRandomSeries = () => {
       type: PICK_RANDOM_SERIES,
       payload: {
         series: allVideoSeries[Math.floor(Math.random() * allVideoSeries.length)],
+      }
+    });
+  };
+};
+
+export const pickRandomColour = () => {
+  return dispatch => {
+    const allColours = getAllColours();
+    dispatch({
+      type: PICK_RANDOM_COLOUR,
+      payload: {
+        colour: allColours[Math.floor(Math.random() * allColours.length)],
       }
     });
   };

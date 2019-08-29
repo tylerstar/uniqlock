@@ -10,6 +10,8 @@
     "loadsh": "^0.0.4",
     "lodash": "^4.17.15",
     "moment-timezone": "^0.5.26",
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.19.1",
     "now": "^16.1.2",
     "react": "^16.8.6",
     "react-animations": "^1.0.0",
@@ -27,7 +29,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-css": "node-sass --include-path src/sass src/sass/slidingAnimation.scss src/sass/slidingAnimation.css",
+    "watch-css": "nodemon -e scss -x \"yran run build-css\""
   },
   "eslintConfig": {
     "extends": "react-app"

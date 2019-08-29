@@ -42,6 +42,7 @@
   animation-iteration-count: infinite;
 }
 
+
 @keyframes slideDownAnim {
   0% {
     background-image: linear-gradient(to bottom, #1E3C96 50%, white 50%);

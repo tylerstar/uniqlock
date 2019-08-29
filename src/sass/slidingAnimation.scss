@@ -1,0 +1,144 @@
+$colours:
+  #cc4125,
+  #d65345,
+  #e06666,
+  #eb8c68,
+  #f6b26b,
+  #fac568,
+  #ffd966,
+  #c9ce71,
+  #93c47d,
+  #84b496,
+  #76a5af,
+  #6d9eeb,
+  #6fa8dc,
+  #8e7cc3,
+  #a87bb1,
+  #c27ba0,
+  #cc3b3b;
+
+$directions:
+  "slideDown",
+  "slideUp",
+  "slideLeft",
+  "slideRight";
+
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1)
+      + $replace
+      + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  @return $string;
+}
+
+@each $direction in $directions {
+  @each $colour in $colours {
+    .#{$direction}-#{str-replace(#{$colour}, '#', '')} {
+      animation-name: #{$direction}-#{str-replace(#{$colour}, '#', '')};
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+    }
+  }
+}
+
+@each $colour in $colours {
+  .colour-#{$colour} {
+    @keyframes slideDown-#{str-replace(#{$colour}, '#', '')} {
+      0% {
+        background-image: linear-gradient(to bottom, $colour 50%, white 50%);
+        background-size: 100% 200%;
+        background-position: 0 0;
+        color: white;
+      }
+      15% {
+        color: $colour;
+      }
+      30% {
+        background-image: linear-gradient(to bottom, $colour 50%, white 50%);
+        background-size: 100% 200%;
+        background-position: 0 -100%;
+        color: $colour;
+      }
+      100% {
+        background-image: linear-gradient(to bottom, $colour 50%, white 50%);
+        background-size: 100% 200%;
+        background-position: 0 -100%;
+        color: $colour;
+      }
+    }
+
+    @keyframes slideUp-#{str-replace(#{$colour}, '#', '')} {
+      0% {
+        background-image: linear-gradient(to top, white 50%, $colour 50%);
+        background-size: 100% 200%;
+        background-position: 0 0;
+        color: white;
+      }
+      15% {
+        color: $colour;
+      }
+      30% {
+        background-image: linear-gradient(to top, white 50%, $colour 50%);
+        background-size: 100% 200%;
+        background-position: 0 100%;
+        color: $colour;
+      }
+      100% {
+        background-image: linear-gradient(to top, white 50%, $colour 50%);
+        background-size: 100% 200%;
+        background-position: 0 100%;
+        color: $colour;
+      }
+    }
+
+    @keyframes slideLeft-#{str-replace(#{$colour}, '#', '')} {
+      0% {
+        background-image: linear-gradient(to left, $colour 50%, white 50%);
+        background-size: 200% 100%;
+        background-position: 0 0;
+        color: $colour;
+      }
+      15% {
+        color: white;
+      }
+      30% {
+        background-image: linear-gradient(to left, $colour 50%, white 50%);
+        background-size: 200% 100%;
+        background-position: 100% 0;
+        color: white;
+      }
+      100% {
+        background-image: linear-gradient(to left, $colour 50%, white 50%);
+        background-size: 200% 100%;
+        background-position: 100% 0;
+        color: white;
+      }
+    }
+
+    @keyframes slideRight-#{str-replace(#{$colour}, '#', '')} {
+      0% {
+        background-image: linear-gradient(to right, white 50%, $colour 50%);
+        background-size: 200% 100%;
+        background-position: 0 0;
+        color: $colour;
+      }
+      15% {
+        color: $colour;
+      }
+      30% {
+        background-image: linear-gradient(to right, white 50%, $colour 50%);
+        background-size: 200% 100%;
+        background-position: -100% 0;
+        color: white;
+      }
+      100% {
+        background-image: linear-gradient(to right, white 50%, $colour 50%);
+        background-size: 200% 100%;
+        background-position: -100% 0;
+        color: white;
+      }
+    }
+  }
+}
