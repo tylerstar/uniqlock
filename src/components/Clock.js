@@ -1,17 +1,17 @@
 import React, {useState, useRef, useEffect} from 'react';
 import { connect } from 'react-redux';
-import videojs from 'video.js';
 import { playVideo } from "../actions/video";
 import { getCurrentVideoURL } from "../selectors";
 import Video from './Video';
 import './Clock.css';
 
-const Clock = ({ city, country }) => {
+const Clock = ({ city, country, series }) => {
   const [time, setTime] = useState("");
   const [slideClass, setSlideClass] = useState("slideDown");
-  const [videoIndex, setVideoIndex] = useState(0);
-  const [videoSeries, setVideoSeries] = useState("uniqlock2");
+  const [videoIndex, setVideoIndex] = useState(1);
   const [isVideoPlay, setIsVideoPlay] = useState('hide-video');
+  const [player, setPlayer] = useState(null);
+  const playerRef = useRef();
 
   const slideAnimLoop = [
     "slideDown",
@@ -62,17 +62,39 @@ const Clock = ({ city, country }) => {
     if (seconds.toString().endsWith('1')) {
       setIsVideoPlay('hide-video');
     } else if (seconds.toString().endsWith('6')) {
-      setVideoIndex(getNextVideoIndex());
       setIsVideoPlay('play-video');
+      playerRef.current.play();
+      setVideoIndex(getNextVideoIndex());
+      setPlayer(createPlayer(videoIndex));
     }
+  };
+
+  const getVideoURL = (series, index) => {
+    if (index !== null && index >= 1 ) {
+      return "https://uniqlock.s3-ap-northeast-1.amazonaws.com" +
+        `/uniqlo_extra/uniqlock${series}/flv/5sec_${index}.mp4`;
+    }
+  };
+
+  const createPlayer = index => {
+    return (
+      <video ref={playerRef} src={getVideoURL(series, index)} width="100%" height="auto" preload="auto"/>
+    );
   };
 
   setTimeout(updateTime, 1000);
 
+  useEffect(() => {
+    const player = createPlayer(videoIndex);
+    setPlayer(player);
+  }, []);
+
+  console.log(player);
+
   return (
     <>
       <div className={`video-panel ${isVideoPlay}`}>
-        <Video series={videoSeries} index={videoIndex} />
+        <Video player={player} />
       </div>
       <div className={`${slideClass} background`}>
         <div className="main-panel">
@@ -86,10 +108,11 @@ const Clock = ({ city, country }) => {
   );
 };
 
-const mapState = state => ({
+const mapState = (state, props) => ({
   city: state.user.city,
   country: state.user.country,
-  videoURL: getCurrentVideoURL(state)
+  videoURL: getCurrentVideoURL(state),
+  series: props.series
 });
 export default connect(
   mapState,

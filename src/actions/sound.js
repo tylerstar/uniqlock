@@ -1,4 +1,5 @@
 import { fetchSound } from '../api';
+import { getSoundSeries } from "../constant/tracks";
 
 export const PLAY_MUSIC_BEGIN = 'PLAY_MUSIC_BEGIN';
 export const PLAY_MUSIC_SUCCESS = 'PLAY_MUSIC_SUCCESS';
