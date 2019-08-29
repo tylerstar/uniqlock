@@ -1,13 +1,11 @@
-import _ from 'lodash';
-
-const sounds = {
-  "2": _.range(0, 5),
-  "3": _.range(0, 8),
-  "4": _.range(0, 8),
-  "5": _.range(0, 11),
-  "6": _.range(0, 14)
+const soundsMaxIndex = {
+  "2": 4,
+  "3": 7,
+  "4": 7,
+  "5": 10,
+  "6": 13,
 };
 
-export const getSoundSeries = series => {
-  return sounds[series];
+export const getSoundMaxIndexBySeries = series => {
+  return soundsMaxIndex[series];
 };

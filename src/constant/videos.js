@@ -1,13 +1,11 @@
-import _ from 'lodash';
-
 const videos = {
-  "2": _.range(1, 80),
-  "3": _.range(1, 70),
-  "4": _.range(1, 45),
-  "5": _.range(1, 100),
-  "6": _.range(1, 100)
+  "2": 79,
+  "3": 69,
+  "4": 44,
+  "5": 106,
+  "6": 104,
 };
 
-export const getVideoSeries = series => {
+export const getVideoMaxIndex = series => {
   return videos[series];
 };

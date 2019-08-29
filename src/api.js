@@ -6,7 +6,7 @@ export const fetchUserLocation = () => {
 export const fetchSound = (soundSeries, soundIndex) => {
   // https://uniqlock.s3-ap-northeast-1.amazonaws.com/uniqlo_extra/uniqlock2/sound/sound${index}.mp3
   return fetch("https://uniqlock.s3-ap-northeast-1.amazonaws.com" +
-    `/uniqlo_extra/${soundSeries}/sound/sound${soundIndex}.mp3`, { method: 'GET'});
+    `/uniqlo_extra/uniqlock${soundSeries}/sound/sound${soundIndex}.mp3`, { method: 'GET'});
 };
 
 const fetchWithData = (

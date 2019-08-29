@@ -1,8 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react';
 import { connect } from 'react-redux';
-import { playVideo } from "../actions/video";
-import { getCurrentVideoURL } from "../selectors";
 import Video from './Video';
+import { getVideoMaxIndex } from "../constant/videos";
 import './Clock.css';
 
 const Clock = ({ city, country, series }) => {
@@ -30,7 +29,7 @@ const Clock = ({ city, country, series }) => {
   };
 
   const getNextVideoIndex = () => {
-    if (videoIndex === 80 || videoIndex === null) {
+    if (videoIndex === getVideoMaxIndex(series) || videoIndex === null) {
       return 0;
     } else {
       return videoIndex + 1;
@@ -65,31 +64,39 @@ const Clock = ({ city, country, series }) => {
     } else if (seconds.toString().endsWith('6')) {
       setIsVideoPlay('play-video');
       playerRef.current.play();
-      // setPlayer(createPlayer(videoIndex));
     }
   };
 
   const getVideoURL = (series, index) => {
+    let filename;
+    if (series === 2) {
+      filename = `5sec_${index}.mp4`;
+    } else if (series === 3) {
+      filename = `5sec${index}.mp4`;
+    } else if (series === 4 ||  series === 5) {
+      filename = `5sec_uc${series}_${index}.mp4`;
+    } else if (series === 6) {
+      filename = `uniqlock6_5sec_${index}.mp4`;
+    }
+
     if (index !== null && index >= 1 ) {
       return "https://uniqlock.s3-ap-northeast-1.amazonaws.com" +
-        `/uniqlo_extra/uniqlock${series}/flv/5sec_${index}.mp4`;
+        `/uniqlo_extra/uniqlock${series}/flv/` + filename;
     }
-  };
-
-  const createPlayer = index => {
-    return (
-      <video ref={playerRef} src={getVideoURL(series, index)} width="100%" height="auto" preload="auto"/>
-    );
   };
 
   setTimeout(updateTime, 1000);
 
   useEffect(() => {
+    const createPlayer = index => {
+      return (
+        <video ref={playerRef} src={getVideoURL(series, index)} width="100%" height="auto" preload="auto"/>
+      );
+    };
+
     const player = createPlayer(videoIndex);
     setPlayer(player);
-  }, [videoIndex]);
-
-  console.log(player);
+  }, [videoIndex, series]);
 
   return (
     <>
@@ -111,10 +118,8 @@ const Clock = ({ city, country, series }) => {
 const mapState = (state, props) => ({
   city: state.user.city,
   country: state.user.country,
-  videoURL: getCurrentVideoURL(state),
   series: props.series
 });
 export default connect(
   mapState,
-  { playVideo }
 )(Clock);

@@ -9,7 +9,11 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducer from './reducers';
 import { loadUserLocation } from './actions/user';
-import { createAudioPlayer, playNextTrack} from './actions/sound';
+import {
+  createAudioPlayer,
+  playSoundTrack,
+  pickRandomSeries,
+} from './actions/media';
 import './index.css';
 import App from './App';
 
@@ -27,7 +31,8 @@ const enhancer = composeEnhancers(
 const store = createStore(reducer, enhancer);
 store.dispatch(loadUserLocation());
 store.dispatch(createAudioPlayer());
-store.dispatch(playNextTrack());
+store.dispatch(pickRandomSeries());
+store.dispatch(playSoundTrack(store.getState().media.currentSeries));
 
 ReactDOM.render(
   <Provider store={store}>

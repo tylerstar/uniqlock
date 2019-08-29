@@ -4,16 +4,14 @@ import {
   PLAY_MUSIC_BEGIN,
   PLAY_MUSIC_SUCCESS,
   PLAY_MUSIC_ERROR,
-} from '../actions/sound';
+  PICK_RANDOM_SERIES
+} from '../actions/media';
 
 const initialState = {
   audioContext: null,
   currentSeries: null,
-  currentIndex: -1,
-  error: null,
-  sounds: {
-    'uniqlock2': [0, 1, 2, 3, 4]
-  }
+  currentSoundIndex: -1,
+  error: null
 };
 const reducer = produce((draft, action) => {
   switch (action.type) {
@@ -24,11 +22,13 @@ const reducer = produce((draft, action) => {
       draft.error = null;
       return;
     case PLAY_MUSIC_SUCCESS:
-      draft.currentIndex = action.payload.index;
-      draft.currentSeries = action.payload.series;
+      draft.currentSoundIndex = action.payload.index;
       return;
     case PLAY_MUSIC_ERROR:
       draft.error = action.error;
+      return;
+    case PICK_RANDOM_SERIES:
+      draft.currentSeries = action.payload.series;
       return;
     default:
       return;

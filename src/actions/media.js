@@ -1,10 +1,23 @@
 import { fetchSound } from '../api';
-import { getSoundSeries } from "../constant/tracks";
+import { getSoundMaxIndexBySeries } from "../constant/tracks";
 
+export const PICK_RANDOM_SERIES = 'PICK_RANDOM_SERIES';
+export const CREATE_AUDIO_PLAYER = 'CREATE_AUDIO_PLAYER';
 export const PLAY_MUSIC_BEGIN = 'PLAY_MUSIC_BEGIN';
 export const PLAY_MUSIC_SUCCESS = 'PLAY_MUSIC_SUCCESS';
 export const PLAY_MUSIC_ERROR = 'PLAY_MUSIC_ERROR';
-export const CREATE_AUDIO_PLAYER = 'CREATE_AUDIO_PLAYER';
+
+export const pickRandomSeries = () => {
+  return dispatch => {
+    const allVideoSeries = [2, 3, 4, 5, 6];
+    dispatch({
+      type: PICK_RANDOM_SERIES,
+      payload: {
+        series: allVideoSeries[Math.floor(Math.random() * allVideoSeries.length)],
+      }
+    });
+  };
+};
 
 export const createAudioPlayer = () => {
   return dispatch => {
@@ -18,39 +31,37 @@ export const createAudioPlayer = () => {
   };
 };
 
-export const playNextTrack = () => {
+export const playSoundTrack = series => {
   return (dispatch, getState) => {
     dispatch({ type: PLAY_MUSIC_BEGIN });
-    const context = getState().sound.audioContext;
-    const currentIndex = getState().sound.currentIndex;
-    const trackSeries = getState().sound.sounds['uniqlock2'];
+    const context = getState().media.audioContext;
+    const currentSoundIndex = getState().media.currentSoundIndex;
+    const currentSeries = getState().media.currentSeries;
+    const seriesMaxIndex = getSoundMaxIndexBySeries(currentSeries);
     const source = context.createBufferSource();
 
-    const getNextTrackIndex = (trackIndexes, currentIndex) => {
-      const currentSoundIndex = trackIndexes.indexOf(currentIndex);
-      if (currentSoundIndex + 1 === trackIndexes.length) {
+    const getNextIndex = (maxIndex, currentIndex) => {
+      if (currentIndex === maxIndex) {
         return 0;
       } else {
         return currentIndex + 1;
       }
     };
 
-    const newSeries = 'uniqlock2';
-    const newIndex = getNextTrackIndex(trackSeries, currentIndex);
+    const newIndex = getNextIndex(seriesMaxIndex, currentSoundIndex);
 
-    fetchSound(newSeries, newIndex)
+    fetchSound(currentSeries, newIndex)
       .then(resp => resp.arrayBuffer())
       .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
       .then(buffer => {
         source.buffer = buffer;
         source.connect(context.destination);
-        source.onended = () => dispatch(playNextTrack());
+        source.onended = () => dispatch(playSoundTrack(series));
         source.start(0);
         dispatch({
           type: PLAY_MUSIC_SUCCESS,
           payload: {
             index: newIndex,
-            series: newSeries
           }
         })
       })
@@ -62,4 +73,3 @@ export const playNextTrack = () => {
       })
   };
 };
-
