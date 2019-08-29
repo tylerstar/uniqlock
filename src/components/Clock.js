@@ -65,7 +65,7 @@ const Clock = ({ city, country, series }) => {
       setIsVideoPlay('play-video');
       playerRef.current.play();
       setVideoIndex(getNextVideoIndex());
-      setPlayer(createPlayer(videoIndex));
+      // setPlayer(createPlayer(videoIndex));
     }
   };
 
@@ -87,7 +87,7 @@ const Clock = ({ city, country, series }) => {
   useEffect(() => {
     const player = createPlayer(videoIndex);
     setPlayer(player);
-  }, []);
+  }, [videoIndex]);
 
   console.log(player);
 
