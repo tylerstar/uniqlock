@@ -1,6 +1,6 @@
 import { fetchSound } from '../api';
-import { getSoundMaxIndexBySeries } from "../constant/tracks";
-import { getAllColours } from "../constant/colors";
+import { getSoundMaxIndexBySeries } from "../constants/tracks";
+import { getAllColours } from "../constants/colors";
 
 export const PICK_RANDOM_SERIES = 'PICK_RANDOM_SERIES';
 export const PICK_RANDOM_COLOUR = 'PICK_RANDOM_COLOUR';

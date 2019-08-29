@@ -6,6 +6,6 @@ const videos = {
   "6": 104,
 };
 
-export const getVideoMaxIndex = series => {
+export const getVideoMaxIndexBySeries = series => {
   return videos[series];
 };

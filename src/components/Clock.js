@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react';
 import { connect } from 'react-redux';
 import Video from './Video';
-import { getVideoMaxIndex } from "../constant/videos";
+import { getVideoMaxIndexBySeries } from "../constants/videos";
 import './Clock.css';
 
 const Clock = ({ city, country, series }) => {
@@ -29,7 +29,7 @@ const Clock = ({ city, country, series }) => {
   };
 
   const getNextVideoIndex = () => {
-    if (videoIndex === getVideoMaxIndex(series) || videoIndex === null) {
+    if (videoIndex === getVideoMaxIndexBySeries(series) || videoIndex === null) {
       return 0;
     } else {
       return videoIndex + 1;
