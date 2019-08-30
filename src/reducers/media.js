@@ -5,7 +5,8 @@ import {
   PLAY_MUSIC_SUCCESS,
   PLAY_MUSIC_ERROR,
   PICK_RANDOM_SERIES,
-  PICK_RANDOM_COLOUR
+  PICK_RANDOM_COLOUR,
+  PICK_RANDOM_SOUND_INDEX
 } from '../actions/media';
 
 const initialState = {
@@ -33,6 +34,9 @@ const reducer = produce((draft, action) => {
       return;
     case PICK_RANDOM_COLOUR:
       draft.currentColour = action.payload.colour;
+      return;
+    case PICK_RANDOM_SOUND_INDEX:
+      draft.currentSoundIndex = action.payload.soundIndex;
       return;
     default:
       return;

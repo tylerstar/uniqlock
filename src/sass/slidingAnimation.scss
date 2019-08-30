@@ -36,7 +36,7 @@ $directions:
 @each $direction in $directions {
   @each $colour in $colours {
     .#{$direction}-#{str-replace(#{$colour}, '#', '')} {
-      animation-name: #{$direction}-#{str-replace(#{$colour}, '#', '')};
+      animation-name: #{$direction}Anim-#{str-replace(#{$colour}, '#', '')};
       animation-duration: 1s;
       animation-iteration-count: infinite;
     }
@@ -45,7 +45,7 @@ $directions:
 
 @each $colour in $colours {
   .colour-#{$colour} {
-    @keyframes slideDown-#{str-replace(#{$colour}, '#', '')} {
+    @keyframes slideDownAnim-#{str-replace(#{$colour}, '#', '')} {
       0% {
         background-image: linear-gradient(to bottom, $colour 50%, white 50%);
         background-size: 100% 200%;
@@ -69,7 +69,7 @@ $directions:
       }
     }
 
-    @keyframes slideUp-#{str-replace(#{$colour}, '#', '')} {
+    @keyframes slideUpAnim-#{str-replace(#{$colour}, '#', '')} {
       0% {
         background-image: linear-gradient(to top, white 50%, $colour 50%);
         background-size: 100% 200%;
@@ -93,7 +93,7 @@ $directions:
       }
     }
 
-    @keyframes slideLeft-#{str-replace(#{$colour}, '#', '')} {
+    @keyframes slideLeftAnim-#{str-replace(#{$colour}, '#', '')} {
       0% {
         background-image: linear-gradient(to left, $colour 50%, white 50%);
         background-size: 200% 100%;
@@ -117,7 +117,7 @@ $directions:
       }
     }
 
-    @keyframes slideRight-#{str-replace(#{$colour}, '#', '')} {
+    @keyframes slideRightAnim-#{str-replace(#{$colour}, '#', '')} {
       0% {
         background-image: linear-gradient(to right, white 50%, $colour 50%);
         background-size: 200% 100%;

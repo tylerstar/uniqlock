@@ -36,124 +36,124 @@
   text-align: center;
 }
 
-.slideDown {
-  animation-name: slideDownAnim;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-}
+/*.slideDown {*/
+  /*animation-name: slideDownAnim;*/
+  /*animation-duration: 1s;*/
+  /*animation-iteration-count: infinite;*/
+/*}*/
 
 
-@keyframes slideDownAnim {
-  0% {
-    background-image: linear-gradient(to bottom, #1E3C96 50%, white 50%);
-    background-size: 100% 200%;
-    background-position: 0 0;
-    color: white;
-  }
-  15% {
-    color: #1E3C96;
-  }
-  30% {
-    background-image: linear-gradient(to bottom, #1E3C96 50%, white 50%);
-    background-size: 100% 200%;
-    background-position: 0 -100%;
-    color: #1E3C96;
-  }
-  100% {
-    background-image: linear-gradient(to bottom, #1E3C96 50%, white 50%);
-    background-size: 100% 200%;
-    background-position: 0 -100%;
-    color: #1E3C96;
-  }
-}
+/*@keyframes slideDownAnim {*/
+  /*0% {*/
+    /*background-image: linear-gradient(to bottom, #1E3C96 50%, white 50%);*/
+    /*background-size: 100% 200%;*/
+    /*background-position: 0 0;*/
+    /*color: white;*/
+  /*}*/
+  /*15% {*/
+    /*color: #1E3C96;*/
+  /*}*/
+  /*30% {*/
+    /*background-image: linear-gradient(to bottom, #1E3C96 50%, white 50%);*/
+    /*background-size: 100% 200%;*/
+    /*background-position: 0 -100%;*/
+    /*color: #1E3C96;*/
+  /*}*/
+  /*100% {*/
+    /*background-image: linear-gradient(to bottom, #1E3C96 50%, white 50%);*/
+    /*background-size: 100% 200%;*/
+    /*background-position: 0 -100%;*/
+    /*color: #1E3C96;*/
+  /*}*/
+/*}*/
 
-.slideUp {
-  animation-name: slideUpAnim;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-}
+/*.slideUp {*/
+  /*animation-name: slideUpAnim;*/
+  /*animation-duration: 1s;*/
+  /*animation-iteration-count: infinite;*/
+/*}*/
 
-@keyframes slideUpAnim {
-  0% {
-    background-image: linear-gradient(to top, white 50%, #1E3C96 50%);
-    background-size: 100% 200%;
-    background-position: 0 0;
-    color: white;
-  }
-  15% {
-    color: #1E3C96;
-  }
-  30% {
-    background-image: linear-gradient(to top, white 50%, #1E3C96 50%);
-    background-size: 100% 200%;
-    background-position: 0 100%;
-    color: #1E3C96;
-  }
-  100% {
-    background-image: linear-gradient(to top, white 50%, #1E3C96 50%);
-    background-size: 100% 200%;
-    background-position: 0 100%;
-    color: #1E3C96;
-  }
-}
+/*@keyframes slideUpAnim {*/
+  /*0% {*/
+    /*background-image: linear-gradient(to top, white 50%, #1E3C96 50%);*/
+    /*background-size: 100% 200%;*/
+    /*background-position: 0 0;*/
+    /*color: white;*/
+  /*}*/
+  /*15% {*/
+    /*color: #1E3C96;*/
+  /*}*/
+  /*30% {*/
+    /*background-image: linear-gradient(to top, white 50%, #1E3C96 50%);*/
+    /*background-size: 100% 200%;*/
+    /*background-position: 0 100%;*/
+    /*color: #1E3C96;*/
+  /*}*/
+  /*100% {*/
+    /*background-image: linear-gradient(to top, white 50%, #1E3C96 50%);*/
+    /*background-size: 100% 200%;*/
+    /*background-position: 0 100%;*/
+    /*color: #1E3C96;*/
+  /*}*/
+/*}*/
 
-.slideLeft {
-  animation-name: slideLeftAnim;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-}
+/*.slideLeft {*/
+  /*animation-name: slideLeftAnim;*/
+  /*animation-duration: 1s;*/
+  /*animation-iteration-count: infinite;*/
+/*}*/
 
-@keyframes slideLeftAnim {
-  0% {
-    background-image: linear-gradient(to left, #1E3C96 50%, white 50%);
-    background-size: 200% 100%;
-    background-position: 0 0;
-    color: #1E3C96;
-  }
-  15% {
-    color: white;
-  }
-  30% {
-    background-image: linear-gradient(to left, #1E3C96 50%, white 50%);
-    background-size: 200% 100%;
-    background-position: 100% 0;
-    color: white;
-  }
-  100% {
-    background-image: linear-gradient(to left, #1E3C96 50%, white 50%);
-    background-size: 200% 100%;
-    background-position: 100% 0;
-    color: white;
-  }
-}
+/*@keyframes slideLeftAnim {*/
+  /*0% {*/
+    /*background-image: linear-gradient(to left, #1E3C96 50%, white 50%);*/
+    /*background-size: 200% 100%;*/
+    /*background-position: 0 0;*/
+    /*color: #1E3C96;*/
+  /*}*/
+  /*15% {*/
+    /*color: white;*/
+  /*}*/
+  /*30% {*/
+    /*background-image: linear-gradient(to left, #1E3C96 50%, white 50%);*/
+    /*background-size: 200% 100%;*/
+    /*background-position: 100% 0;*/
+    /*color: white;*/
+  /*}*/
+  /*100% {*/
+    /*background-image: linear-gradient(to left, #1E3C96 50%, white 50%);*/
+    /*background-size: 200% 100%;*/
+    /*background-position: 100% 0;*/
+    /*color: white;*/
+  /*}*/
+/*}*/
 
-.slideRight {
-  animation-name: slideRightAnim;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-  color: white;
-}
+/*.slideRight {*/
+  /*animation-name: slideRightAnim;*/
+  /*animation-duration: 1s;*/
+  /*animation-iteration-count: infinite;*/
+  /*color: white;*/
+/*}*/
 
-@keyframes slideRightAnim {
-  0% {
-    background-image: linear-gradient(to right, white 50%, #1E3C96 50%);
-    background-size: 200% 100%;
-    background-position: 0 0;
-    color: #1E3C96;
-  }
-  15% {
-    color: #1E3C96;
-  }
-  30% {
-    background-image: linear-gradient(to right, white 50%, #1E3C96 50%);
-    background-size: 200% 100%;
-    background-position: -100% 0;
-    color: white;
-  }
-  100% {
-    background-image: linear-gradient(to right, white 50%, #1E3C96 50%);
-    background-size: 200% 100%;
-    background-position: -100% 0;
-    color: white;
-  }
-}
+/*@keyframes slideRightAnim {*/
+  /*0% {*/
+    /*background-image: linear-gradient(to right, white 50%, #1E3C96 50%);*/
+    /*background-size: 200% 100%;*/
+    /*background-position: 0 0;*/
+    /*color: #1E3C96;*/
+  /*}*/
+  /*15% {*/
+    /*color: #1E3C96;*/
+  /*}*/
+  /*30% {*/
+    /*background-image: linear-gradient(to right, white 50%, #1E3C96 50%);*/
+    /*background-size: 200% 100%;*/
+    /*background-position: -100% 0;*/
+    /*color: white;*/
+  /*}*/
+  /*100% {*/
+    /*background-image: linear-gradient(to right, white 50%, #1E3C96 50%);*/
+    /*background-size: 200% 100%;*/
+    /*background-position: -100% 0;*/
+    /*color: white;*/
+  /*}*/
+/*}*/

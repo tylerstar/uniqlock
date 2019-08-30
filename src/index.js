@@ -14,6 +14,7 @@ import {
   playSoundTrack,
   pickRandomSeries,
   pickRandomColour,
+  pickRandomSoundIndex
 } from './actions/media';
 import './index.css';
 import App from './App';
@@ -34,6 +35,7 @@ store.dispatch(pickRandomColour());
 store.dispatch(loadUserLocation());
 store.dispatch(createAudioPlayer());
 store.dispatch(pickRandomSeries());
+store.dispatch(pickRandomSoundIndex());
 store.dispatch(playSoundTrack(store.getState().media.currentSeries));
 
 ReactDOM.render(

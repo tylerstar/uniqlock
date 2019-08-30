@@ -1,9 +1,11 @@
+import _ from 'loadsh';
 import { fetchSound } from '../api';
 import { getSoundMaxIndexBySeries } from "../constants/tracks";
 import { getAllColours } from "../constants/colors";
 
 export const PICK_RANDOM_SERIES = 'PICK_RANDOM_SERIES';
 export const PICK_RANDOM_COLOUR = 'PICK_RANDOM_COLOUR';
+export const PICK_RANDOM_SOUND_INDEX = 'PICK_RANDOM_SOUND_INDEX';
 export const CREATE_AUDIO_PLAYER = 'CREATE_AUDIO_PLAYER';
 export const PLAY_MUSIC_BEGIN = 'PLAY_MUSIC_BEGIN';
 export const PLAY_MUSIC_SUCCESS = 'PLAY_MUSIC_SUCCESS';
@@ -28,6 +30,20 @@ export const pickRandomColour = () => {
       type: PICK_RANDOM_COLOUR,
       payload: {
         colour: allColours[Math.floor(Math.random() * allColours.length)],
+      }
+    });
+  };
+};
+
+export const pickRandomSoundIndex = () => {
+  return (dispatch, getState) => {
+    const currentSeries = getState().media.currentSeries;
+    const maxSoundIndex = getSoundMaxIndexBySeries(currentSeries);
+    const soundIndexes = _.range(0, maxSoundIndex+1);
+    dispatch({
+      type: PICK_RANDOM_SOUND_INDEX,
+      payload: {
+        soundIndex: soundIndexes[Math.floor(Math.random() * soundIndexes.length)],
       }
     });
   };

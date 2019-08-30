@@ -30,7 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build-css": "node-sass --include-path src/sass src/sass/slidingAnimation.scss src/sass/slidingAnimation.css",
+    "build-css": "node-sass --include-path src/sass src/sass/slidingAnimation.scss src/components/ClockAnimation.css",
     "watch-css": "nodemon -e scss -x \"yran run build-css\""
   },
   "eslintConfig": {

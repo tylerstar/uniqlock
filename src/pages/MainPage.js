@@ -5,14 +5,10 @@ import Menu from "../components/Menu";
 import Music from "../components/Music";
 import './MainPage.css';
 
-const MainPage = ({ currentSeries, currentColour }) => {
-  const style = {
-    "background-color": currentColour
-  };
-
+const MainPage = ({ currentSeries }) => {
   return (
-    <div className="main-page" style={style}>
-      <Menu className="menu" />
+    <div className="main-page">
+      <Menu className="menu"/>
       <Music />
       <Clock series={currentSeries} />
     </div>
@@ -21,7 +17,6 @@ const MainPage = ({ currentSeries, currentColour }) => {
 
 const mapState = state => ({
   currentSeries: state.media.currentSeries,
-  currentColour: state.media.currentColour
 });
 export default connect(
   mapState
