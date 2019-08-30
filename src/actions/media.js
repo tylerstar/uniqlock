@@ -1,7 +1,7 @@
 import _ from 'loadsh';
 import { fetchSound } from '../api';
 import { getSoundMaxIndexBySeries } from "../constants/tracks";
-import { getAllColours } from "../constants/colors";
+import { getAllColours } from "../constants/colours";
 
 export const PICK_RANDOM_SERIES = 'PICK_RANDOM_SERIES';
 export const PICK_RANDOM_COLOUR = 'PICK_RANDOM_COLOUR';
