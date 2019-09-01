@@ -11,7 +11,7 @@ This project is still at the early stage, you can check the latest demo: https:/
 You need to install yarn or npm before running this project.
 
 ```text
-cd /uniqlock && yarn install 
+cd uniqlock && yarn install 
 ```
 
 ## Run
