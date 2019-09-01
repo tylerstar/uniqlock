@@ -13,7 +13,9 @@ const queryUserLocation = () => {
       .then(resp => {
         if (resp.time_zone && resp.time_zone.name && resp.country_name) {
           const payload = {
-            city: resp.time_zone.name.split("/")[1].toUpperCase(),
+            city: resp.time_zone.name.split("/")[1]
+              .toUpperCase()
+              .replace('_', ' '),
             country: resp.country_name.toUpperCase()
           };
           localStorage.setItem(
