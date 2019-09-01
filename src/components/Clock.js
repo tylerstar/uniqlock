@@ -1,7 +1,10 @@
 import React, {useState, useRef, useEffect} from 'react';
 import { connect } from 'react-redux';
 import Video from './Video';
-import { getVideoMaxIndexBySeries } from "../constants/videos";
+import {
+  getSeriesMaxIndex,
+  getVideoURL
+} from "../constants/videos";
 import './ClockAnimation.css';
 import './Clock.css';
 
@@ -14,7 +17,7 @@ const Clock = ({ city, country, series, currentColour }) => {
   const playerRef = useRef();
   const animation = useRef();
 
-  // Get animation css according to color
+  // Animation
   const getAnimationStyleByColour = (currentColour) => {
     const colourName = currentColour.slice(1);
     return [
@@ -25,13 +28,13 @@ const Clock = ({ city, country, series, currentColour }) => {
     ];
   };
 
-  // Initialise the animation style
   useEffect(() => {
     const animationStyle = getAnimationStyleByColour(currentColour);
     animation.current = animationStyle;
     setCurrentAnimation(animationStyle[0]);
   }, [currentColour]);
 
+  // Videos
   const getNextAnim = currAnim => {
     const currAnimIndex = animation.current.indexOf(currAnim);
     if (currAnimIndex + 1 === animation.current.length) {
@@ -42,7 +45,7 @@ const Clock = ({ city, country, series, currentColour }) => {
   };
 
   const getNextVideoIndex = () => {
-    if (videoIndex === getVideoMaxIndexBySeries(series) || videoIndex === null) {
+    if (videoIndex === getSeriesMaxIndex(series, 'day') || videoIndex === null) {
       return 0;
     } else {
       return videoIndex + 1;
@@ -56,6 +59,7 @@ const Clock = ({ city, country, series, currentColour }) => {
     return i;
   };
 
+  // Animation & video preloading trigger
   const updateTime = () => {
     const date = new Date();
     const h = _formatTime(date.getHours());
@@ -81,31 +85,14 @@ const Clock = ({ city, country, series, currentColour }) => {
     }
   };
 
-  const getVideoURL = (series, index) => {
-    let filename;
-    if (series === 2) {
-      filename = `5sec_${index}.mp4`;
-    } else if (series === 3) {
-      filename = `5sec${index}.mp4`;
-    } else if (series === 4 ||  series === 5) {
-      filename = `5sec_uc${series}_${index}.mp4`;
-    } else if (series === 6) {
-      filename = `uniqlock6_5sec_${index}.mp4`;
-    }
-
-    if (index !== null && index >= 1 ) {
-      return "https://uniqlock.s3-ap-northeast-1.amazonaws.com" +
-        `/uniqlo_extra/uniqlock${series}/flv/` + filename;
-    }
-  };
-
+  // Refresh this component after 1 second in order to apply new animation or video
   setTimeout(updateTime, 1000);
 
   // Initialise the video if videoIndex and series changed
   useEffect(() => {
     const createPlayer = index => {
       return (
-        <video ref={playerRef} src={getVideoURL(series, index)} width="100%" height="auto" preload="auto"/>
+        <video ref={playerRef} src={getVideoURL(series, index, 'day')} width="100%" height="auto" preload="auto"/>
       );
     };
 
