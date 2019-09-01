@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Video from './Video';
 import {
@@ -117,10 +117,10 @@ const Clock = ({ city, country, series, currentColour }) => {
   );
 };
 
-const mapState = (state, props) => ({
+const mapState = state => ({
   city: state.user.city,
   country: state.user.country,
-  series: props.series,
+  series: state.media.currentSeries,
   currentColour: state.media.currentColour
 });
 export default connect(
